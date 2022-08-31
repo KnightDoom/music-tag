@@ -111,6 +111,34 @@ class Apev2File(AudioFile):
                                         type=int),
         '#samplerate': TAG_MAP_ENTRY(getter=lambda afile, norm_key: None,
                                      type=int),
+
+        'albumartistsort': TAG_MAP_ENTRY(getter='ALBUMARTISTSORT', setter='ALBUMARTISTSORT', type=str),
+        'albumsort': TAG_MAP_ENTRY(getter='ALBUMSORT', setter='ALBUMSORT', type=str),
+        'artistsort': TAG_MAP_ENTRY(getter='ARTISTSORT', setter='ARTISTSORT', type=str),
+        'composersort': TAG_MAP_ENTRY(getter='COMPOSERSORT', setter='COMPOSERSORT', type=str),
+        'titlesort': TAG_MAP_ENTRY(getter='TITLESORT', setter='TITLESORT', type=str),
+        'work': TAG_MAP_ENTRY(getter='WORK', setter='WORK', type=str),
+        'movement': TAG_MAP_ENTRY(getter='MOVEMENTNAME', setter='MOVEMENTNAME', type=str),
+        'movementtotal': TAG_MAP_ENTRY(getter='MOVEMENTTOTAL', setter='MOVEMENTTOTAL', type=int),
+        'movementnumber': TAG_MAP_ENTRY(getter='MOVEMENT', setter='MOVEMENT', type=int),
+        'key': TAG_MAP_ENTRY(getter='KEY', setter='KEY', type=str),
+        'media': TAG_MAP_ENTRY(getter='Media', setter='Media', type=str),
+
+        'musicbrainzartistid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_ARTISTID', setter='MUSICBRAINZ_ARTISTID', type=str),
+        'musicbrainzdiscid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_DISCID', setter='MUSICBRAINZ_DISCID', type=str),
+        'musicbrainzoriginalartistid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_ORIGINALARTISTID', setter='MUSICBRAINZ_ORIGINALARTISTID', type=str),
+        'musicbrainzoriginalalbumid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_ORIGINALALBUMID', setter='musicbrainz_originalalbumid', type=str),
+        'musicbrainzrecordingid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_RECORDINGID', setter='MUSICBRAINZ_RECORDINGID', type=str),
+        'musicbrainzalbumartistid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_ALBUMARTISTID', setter='MUSICBRAINZ_ALBUMARTISTID', type=str),
+        'musicbrainzreleasegroupid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_RELEASEGROUPID', setter='MUSICBRAINZ_RELEASEGROUPID', type=str),
+        'musicbrainzalbumid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_ALBUMID', setter='MUSICBRAINZ_ALBUMID', type=str),
+        'musicbrainztrackid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_TRACKID', setter='MUSICBRAINZ_TRACKID', type=str),
+        'musicbrainzworkid': TAG_MAP_ENTRY(getter='MUSICBRAINZ_WORKID', setter='MUSICBRAINZ_WORKID', type=str),
+
+        'musicipfingerprint': TAG_MAP_ENTRY(getter='MUSICIP_FINGERPRINT', setter='MUSICIP_FINGERPRINT', type=str),
+        'musicippuid': TAG_MAP_ENTRY(getter='MUSICIP_PUID', setter='MUSICIP_PUID', type=str),
+
+        'subtitle': TAG_MAP_ENTRY(getter='Subtitle', setter='Subtitle', type=str),
     }
 
     def _ft_getter(self, key):

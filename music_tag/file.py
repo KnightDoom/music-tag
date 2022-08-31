@@ -585,10 +585,16 @@ class AudioFile(object):
         
         t_lst = []
         for tag in tags:
-            if resolve:
-                mdi = self.resolve(tag, None)
-            else:
-                mdi = self.get(tag, None)
+            try:
+                #print("-- " + tag + " ", end="")
+                if resolve:
+                    mdi = self.resolve(tag, None)
+                else:
+                    mdi = self.get(tag, None)
+                #print(mdi)
+            except KeyError:
+                #print(None)
+                mdi = None
 
             if mdi or show_empty:
                 t_lst.append('{0}: {1}'.format(tag, str(mdi)))

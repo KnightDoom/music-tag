@@ -195,6 +195,34 @@ _TAG_MAP_ID3_2_4 = {
     'artwork': TAG_MAP_ENTRY(getter=get_pictures, setter=set_pictures,
                              remover=('APIC', 'PIC'),
                              type=Artwork),
+
+    'albumartistsort': TAG_MAP_ENTRY(getter='TSO2', setter='TSO2', type=str),
+    'albumsort': TAG_MAP_ENTRY(getter='TSOA', setter='TSOA', type=str),
+    'artistsort': TAG_MAP_ENTRY(getter='TSOP', setter='TSOP', type=str),
+    'composersort': TAG_MAP_ENTRY(getter='TSOC', setter='TSOC', type=str),
+    'titlesort': TAG_MAP_ENTRY(getter='TSOT', setter='TSOT', type=str),
+    'work': TAG_MAP_ENTRY(getter=('TIT1', 'TXXX:WORK'), setter=('TIT1', 'TXXX:WORK'), type=str),
+    'movement': TAG_MAP_ENTRY(getter='MVNM', setter='MVNM', type=str),
+    'movementtotal': TAG_MAP_ENTRY(getter='MVIN', setter='MVIN', type=int),
+    'movementnumber': TAG_MAP_ENTRY(getter='MVIN', setter='MVIN', type=int),
+    'key': TAG_MAP_ENTRY(getter='TKEY', setter='TKEY', type=str),
+    'media': TAG_MAP_ENTRY(getter='TMED', setter='TMED', type=str),
+
+    'musicbrainzartistid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Artist Id', setter='TXXX:MusicBrainz Artist Id', type=str),
+    'musicbrainzdiscid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Disc Id', setter='TXXX:MusicBrainz Disc Id', type=str),
+    'musicbrainzoriginalartistid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Original Artist Id', setter='TXXX:MusicBrainz Original Artist Id', type=str),
+    'musicbrainzoriginalalbumid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Original Album Id', setter='TXXX:MusicBrainz Original Album Id', type=str),
+    'musicbrainzrecordingid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Track Id', setter='TXXX:MusicBrainz Track ID', type=str),
+    'musicbrainzalbumartistid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Album Artist Id', setter='TXXX:MusicBrainz Album Artist Id', type=str),
+    'musicbrainzreleasegroupid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Release Group Id', setter='TXXX:MusicBrainz Release Group Id', type=str),
+    'musicbrainzalbumid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Album Id', setter='TXXX:MusicBrainz Album Id', type=str),
+    'musicbrainztrackid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Release Track Id', setter='TXXX:MusicBrainz Release Track Id', type=str),
+    'musicbrainzworkid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Work Id', setter='TXXX:MusicBrainz Work Id', type=str),
+
+    'musicipfingerprint': TAG_MAP_ENTRY(getter='TXXX:MusicMagic Fingerprint', setter='TXXX:MusicMagic Fingerprint', type=str),
+    'musicippuid': TAG_MAP_ENTRY(getter='TXXX:MusicIP PUID', setter='TXXX:MusicIP PUID', type=str),
+
+    'subtitle': TAG_MAP_ENTRY(getter='TIT3', setter='TIT3', type=str),
 }
 
 
@@ -243,14 +271,14 @@ class Id3File(AudioFile):
     def _ft_setter(self, key, md_val, appendable=True):
         self.mfile.tags.delall(key)
         kls = getattr(mutagen.id3, key.split(':')[0])
-        
+
         kwargs = {}
         _o = kls()
         if hasattr(_o, 'lang'):
             # so, it's a little anglo-centric to do this, but
             # this matches the behavior of kid3 and MusicBrainz Picard
             kwargs['lang'] = 'eng'
-        
+
         self.mfile.tags.add(kls(text=str(md_val), **kwargs))
 
     def _ft_rmtag(self, key):

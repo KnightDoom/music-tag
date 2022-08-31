@@ -69,6 +69,34 @@ class FlacFile(AudioFile):
                                  remover=rm_pictures,
                                  type=Artwork),
 
+        'albumartistsort': TAG_MAP_ENTRY(getter='albumartistsort', setter='albumartistsort', type=str),
+        'albumsort': TAG_MAP_ENTRY(getter='albumsort', setter='albumsort', type=str),
+        'artistsort': TAG_MAP_ENTRY(getter='artistsort', setter='artistsort', type=str),
+        'composersort': TAG_MAP_ENTRY(getter='composersort', setter='composersort', type=str),
+        'titlesort': TAG_MAP_ENTRY(getter='titlesort', setter='titlesort', type=str),
+        'work': TAG_MAP_ENTRY(getter='work', setter='work', type=str),
+        'movement': TAG_MAP_ENTRY(getter='movement', setter='movement', type=str),
+        'movementtotal': TAG_MAP_ENTRY(getter='movementtotal', setter='movementtotal', type=int),
+        'movementnumber': TAG_MAP_ENTRY(getter='movementnumber', setter='movementnumber', type=int),
+        'key': TAG_MAP_ENTRY(getter='key', setter='key', type=str),
+        'media': TAG_MAP_ENTRY(getter='media', setter='media', type=str),
+
+        'musicbrainzartistid': TAG_MAP_ENTRY(getter='musicbrainz_artistid', setter='musicbrainz_artistid', type=str),
+        'musicbrainzdiscid': TAG_MAP_ENTRY(getter='musicbrainz_discid', setter='musicbrainz_discid', type=str),
+        'musicbrainzoriginalartistid': TAG_MAP_ENTRY(getter='musicbrainz_originalartistid', setter='musicbrainz_originalartistid', type=str),
+        'musicbrainzoriginalalbumid': TAG_MAP_ENTRY(getter='musicbrainz_originalalbumid', setter='musicbrainz_originalalbumid', type=str),
+        'musicbrainzrecordingid': TAG_MAP_ENTRY(getter='musicbrainz_recordingid', setter='musicbrainz_recordingid', type=str),
+        'musicbrainzalbumartistid': TAG_MAP_ENTRY(getter='musicbrainz_albumartistid', setter='musicbrainz_albumartistid', type=str),
+        'musicbrainzreleasegroupid': TAG_MAP_ENTRY(getter='musicbrainz_releasegroupid', setter='musicbrainz_releasegroupid', type=str),
+        'musicbrainzalbumid': TAG_MAP_ENTRY(getter='musicbrainz_albumid', setter='musicbrainz_albumid', type=str),
+        'musicbrainztrackid': TAG_MAP_ENTRY(getter='musicbrainz_trackid', setter='musicbrainz_trackid', type=str),
+        'musicbrainzworkid': TAG_MAP_ENTRY(getter='musicbrainz_workid', setter='musicbrainz_workid', type=str),
+
+        'musicipfingerprint': TAG_MAP_ENTRY(getter='musicip_fingerprint', setter='musicip_fingerprint', type=str),
+        'musicippuid': TAG_MAP_ENTRY(getter='musicip_puid', setter='musicip_puid', type=str),
+
+        'subtitle': TAG_MAP_ENTRY(getter='subtitle', setter='subtitle', type=str),
+
         '#codec': TAG_MAP_ENTRY(getter=lambda afile, norm_key: 'flac',
                                 type=str),
     }

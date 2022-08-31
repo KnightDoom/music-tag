@@ -103,11 +103,11 @@ def set_artwork(afile, norm_key, artworks):
 
 def freeform_get(afile, norm_key):
     return [val.decode() for val in afile.mfile.get(norm_key, [])]
-    
+
 def freeform_set(afile, norm_key, val):
     ff_vals = [MP4FreeForm(v.encode('utf-8')) for v in val.values]
     afile.mfile.tags[norm_key] = ff_vals
-    
+
 
 class Mp4File(AudioFile):
     tag_format = "mp4"
@@ -145,6 +145,80 @@ class Mp4File(AudioFile):
 
         'artwork': TAG_MAP_ENTRY(getter=get_artwork, setter=set_artwork,
                                  type=Artwork),
+
+
+        'albumartistsort': TAG_MAP_ENTRY(getter='soaa', setter='soaa', type=str),
+        'albumsort': TAG_MAP_ENTRY(getter='soal', setter='soal', type=str),
+        'artistsort': TAG_MAP_ENTRY(getter='soar', setter='soar', type=str),
+        'composersort': TAG_MAP_ENTRY(getter='soco', setter='soco', type=str),
+        'titlesort': TAG_MAP_ENTRY(getter='sonm', setter='sonm', type=str),
+        'work': TAG_MAP_ENTRY(getter='©wrk', setter='©wrk', type=str),
+        'movement': TAG_MAP_ENTRY(getter='©mvn', setter='©mvn', type=str),
+        'movementtotal': TAG_MAP_ENTRY(getter='mvc', setter='mvc', type=int),
+        'movementnumber': TAG_MAP_ENTRY(getter='mvi', setter='mvi', type=int),
+        'key': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:initialkey'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:initialkey', v),
+                              remover='----:com.apple.iTunes:initialkey',
+                              type=str),
+        'media': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MEDIA'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MEDIA', v),
+                              remover='----:com.apple.iTunes:MEDIA',
+                              type=str),
+
+        'musicbrainzartistid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Artist Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Artist Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Artist Id',
+                              type=str),
+        'musicbrainzdiscid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Disc Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Disc Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Disc Id',
+                              type=str),
+        'musicbrainzoriginalartistid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Original Artist Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Original Artist Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Original Artist Id',
+                              type=str),
+        'musicbrainzoriginalalbumid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Original Album Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Original Album Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Original Album Id',
+                              type=str),
+        'musicbrainzrecordingid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Track Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Track Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Track Id',
+                              type=str),
+        'musicbrainzalbumartistid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Album Artist Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Album Artist Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Album Artist Id',
+                              type=str),
+        'musicbrainzreleasegroupid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Release Group Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Release Group Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Release Group Id',
+                              type=str),
+        'musicbrainzalbumid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Album Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Album Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Album Id',
+                              type=str),
+        'musicbrainztrackid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Release Track Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Release Track Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Release Track Id',
+                              type=str),
+        'musicbrainzworkid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Work Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Work Id', v),
+                              remover='----:com.apple.iTunes:MusicBrainz Work Id',
+                              type=str),
+
+        'musicipfingerprint': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:fingerprint'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:fingerprint', v),
+                              remover='----:com.apple.iTunes:fingerprint',
+                              type=str),
+        'musicippuid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicIP PUID'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicIP PUID', v),
+                              remover='----:com.apple.iTunes:MusicIP PUID',
+                              type=str),
+
+        'subtitle': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:SUBTITLE'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:SUBTITLE', v),
+                              remover='----:com.apple.iTunes:SUBTITLE',
+                              type=str),
     }
 
 
