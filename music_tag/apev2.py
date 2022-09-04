@@ -137,8 +137,11 @@ class Apev2File(AudioFile):
 
         'musicipfingerprint': TAG_MAP_ENTRY(getter='MUSICIP_FINGERPRINT', setter='MUSICIP_FINGERPRINT', type=str),
         'musicippuid': TAG_MAP_ENTRY(getter='MUSICIP_PUID', setter='MUSICIP_PUID', type=str),
+        'acoustidid': TAG_MAP_ENTRY(getter='ACOUSTID_ID', setter='ACOUSTID_ID', type=str),
+        'acoustidfingerprint': TAG_MAP_ENTRY(getter='ACOUSTID_FINGERPRINT', setter='ACOUSTID_FINGERPRINT', type=str),
 
         'subtitle': TAG_MAP_ENTRY(getter='Subtitle', setter='Subtitle', type=str),
+        'discsubtitle': TAG_MAP_ENTRY(getter='DiscSubtitle', setter='DiscSubtitle', type=str),
     }
 
     def _ft_getter(self, key):
