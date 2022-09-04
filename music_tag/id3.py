@@ -221,8 +221,11 @@ _TAG_MAP_ID3_2_4 = {
 
     'musicipfingerprint': TAG_MAP_ENTRY(getter='TXXX:MusicMagic Fingerprint', setter='TXXX:MusicMagic Fingerprint', type=str),
     'musicippuid': TAG_MAP_ENTRY(getter='TXXX:MusicIP PUID', setter='TXXX:MusicIP PUID', type=str),
+    'acoustidid': TAG_MAP_ENTRY(getter='TXXX:Acoustid Id', setter='TXXX:Acoustid Id', type=str),
+    'acoustidfingerprint': TAG_MAP_ENTRY(getter='TXXX:Acoustid Fingerprint', setter='TXXX:Acoustid Fingerprint', type=str),
 
     'subtitle': TAG_MAP_ENTRY(getter='TIT3', setter='TIT3', type=str),
+    'discsubtitle': TAG_MAP_ENTRY(getter='TSST', setter='TSST', type=str),
 }
 
 

@@ -115,8 +115,11 @@ class OggFile(AudioFile):
 
         'musicipfingerprint': TAG_MAP_ENTRY(getter='musicip_fingerprint', setter='musicip_fingerprint', type=str),
         'musicippuid': TAG_MAP_ENTRY(getter='musicip_puid', setter='musicip_puid', type=str),
+        'acoustidid': TAG_MAP_ENTRY(getter='acoustid_id', setter='acoustid_id', type=str),
+        'acoustidfingerprint': TAG_MAP_ENTRY(getter='acoustid_fingerprint', setter='acoustid_fingerprint', type=str),
 
         'subtitle': TAG_MAP_ENTRY(getter='subtitle', setter='subtitle', type=str),
+        'discsubtitle': TAG_MAP_ENTRY(getter='discsubtitle', setter='discsubtitle', type=str),
     }
 
     def _ft_setter(self, key, md_val, appendable=True):

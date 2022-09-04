@@ -214,10 +214,22 @@ class Mp4File(AudioFile):
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicIP PUID', v),
                               remover='----:com.apple.iTunes:MusicIP PUID',
                               type=str),
+        'acoustidid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:Acoustid Id'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:Acoustid Id', v),
+                              remover='----:com.apple.iTunes:Acoustid Id',
+                              type=str),
+        'acoustidfingerprint': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:Acoustid Fingerprint'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:Acoustid Fingerprint', v),
+                              remover='----:com.apple.iTunes:Acoustid Fingerprint',
+                              type=str),
 
         'subtitle': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:SUBTITLE'),
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:SUBTITLE', v),
                               remover='----:com.apple.iTunes:SUBTITLE',
+                              type=str),
+        'discsubtitle': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:DISCSUBTITLE'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:DISCSUBTITLE', v),
+                              remover='----:com.apple.iTunes:DISCSUBTITLE',
                               type=str),
     }
 
