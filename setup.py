@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from distutils.core import setup
+from setuptools import setup, find_packages
 from glob import glob
 import io
 import json
@@ -79,7 +79,7 @@ def _main():
           cmdclass=cmdclass,
           scripts=scripts,
           zip_safe=True,
-          classifiers=(
+          classifiers=[
               "Programming Language :: Python :: 3",
               "Programming Language :: Python :: 3.3",
               "Programming Language :: Python :: 3.4",
@@ -88,7 +88,7 @@ def _main():
               "Programming Language :: Python :: 3.7",
               "License :: OSI Approved :: MIT License",
               "Operating System :: OS Independent",
-          ),
+          ],
     )
 
     # if installed, store list of installed files in a json file - this
