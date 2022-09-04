@@ -44,6 +44,33 @@ characters. In other words, ``Album Artist``, ``album-artist``, and
 - ``tracktitle``
 - ``year``
 - ``isrc``
+- ``albumartistsort``
+- ``albumsort``
+- ``artistsort``
+- ``composersort``
+- ``titlesort``
+- ``work``
+- ``movement``
+- ``movementtotal``
+- ``movementnumber``
+- ``key``
+- ``media``
+- ``musicbrainzartistid``
+- ``musicbrainzdiscid``
+- ``musicbrainzoriginalartistid``
+- ``musicbrainzoriginalalbumid``
+- ``musicbrainzrecordingid``
+- ``musicbrainzalbumartistid``
+- ``musicbrainzreleasegroupid``
+- ``musicbrainzalbumid``
+- ``musicbrainztrackid``
+- ``musicbrainzworkid``
+- ``musicipfingerprint``
+- ``musicippuid``
+- ``acoustidid``
+- ``acoustidfingerprint``
+- ``subtitle``
+- ``discsubtitle``
 - ``#bitrate`` (read only)
 - ``#codec`` (read only)
 - ``#length`` (read only)
