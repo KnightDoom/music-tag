@@ -289,6 +289,7 @@ class AudioFile(object):
         'name': 'tracktitle',
         'disknumber': 'discnumber',
         'totaldisks': 'totaldiscs',
+        'disksubtitle': 'discsubtitle',
     }
 
     _DEFAULT_TAG_MAP = {
@@ -309,6 +310,36 @@ class AudioFile(object):
         'comment': TAG_MAP_ENTRY(type=str),
 
         'artwork': TAG_MAP_ENTRY(type=Artwork),
+        'albumartistsort': TAG_MAP_ENTRY(type=str),
+        'albumsort': TAG_MAP_ENTRY(type=str),
+        'artistsort': TAG_MAP_ENTRY(type=str),
+        'composersort': TAG_MAP_ENTRY(type=str),
+        'titlesort': TAG_MAP_ENTRY(type=str),
+        'work': TAG_MAP_ENTRY(type=str),
+        'movement': TAG_MAP_ENTRY(type=str),
+        'movementtotal': TAG_MAP_ENTRY(type=int),
+        'movementnumber': TAG_MAP_ENTRY(type=int),
+        'key': TAG_MAP_ENTRY(type=str),
+        'media': TAG_MAP_ENTRY(type=str),
+
+        'musicbrainzartistid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzdiscid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzoriginalartistid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzoriginalalbumid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzrecordingid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzalbumartistid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzreleasegroupid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzalbumid': TAG_MAP_ENTRY(type=str),
+        'musicbrainztrackid': TAG_MAP_ENTRY(type=str),
+        'musicbrainzworkid': TAG_MAP_ENTRY(type=str),
+
+        'musicipfingerprint': TAG_MAP_ENTRY(type=str),
+        'musicippuid': TAG_MAP_ENTRY(type=str),
+        'acoustidid': TAG_MAP_ENTRY(type=str),
+        'acoustidfingerprint': TAG_MAP_ENTRY(type=str),
+
+        'subtitle': TAG_MAP_ENTRY(type=str),
+        'discsubtitle': TAG_MAP_ENTRY(type=str),
 
         '#bitrate': TAG_MAP_ENTRY(getter='bitrate', type=int),
         '#codec': TAG_MAP_ENTRY(getter='codec', type=str),
@@ -578,6 +609,9 @@ class AudioFile(object):
                     self._ft_rmtag(key)
             elif isinstance(remover, util.string_types):
                 self._ft_rmtag(remover)
+
+    def tags(self):
+        return sorted(list(self._TAG_MAP.keys()))
 
     def info(self, tags=None, show_empty=False, resolve=False):
         if not tags:
