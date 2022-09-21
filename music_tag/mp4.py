@@ -77,9 +77,13 @@ def get_artwork(afile, norm_key):
     fmt_lut = {mutagen.mp4.MP4Cover.FORMAT_JPEG: 'jpeg',
                mutagen.mp4.MP4Cover.FORMAT_PNG: 'png',
               }
-    artworks = [Artwork(bytes(p)) for p in afile.mfile.tags['covr']]
+    try:
+        artworks = [Artwork(bytes(p)) for p in afile.mfile.tags['covr']]
+    except KeyError:
+        artworks = []
 
     return MetadataItem(Artwork, None, artworks)
+
 
 def set_artwork(afile, norm_key, artworks):
     if not isinstance(artworks, MetadataItem):
