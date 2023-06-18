@@ -45,7 +45,7 @@ def sanitize_int(val):
         if m:
             ret = int(m.group(1))
         else:
-            raise ValueError('int contains no in {0}'.format(val))
+            raise ValueError('{0} is not an integer'.format(val))
     return ret
 
 def sanitize_bool(val):
