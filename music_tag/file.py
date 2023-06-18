@@ -611,7 +611,7 @@ class AudioFile(object):
                 self._ft_rmtag(remover)
 
     def tags(self):
-        return sorted(list(self._TAG_MAP.keys()))
+        return sorted(list(self.tag_map.keys()))
 
     def info(self, tags=None, show_empty=False, resolve=False):
         if not tags:
