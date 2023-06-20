@@ -68,6 +68,9 @@ def load_file(file_spec, err='raise'):
 
     return ret
 
+def tags():
+    return file.tags()
+
 __all__ = ['file', 'util',
            'aac', 'aiff', 'apev2', 'asf', 'dsf', 'flac',
            'id3', 'mp4', 'smf', 'vorbis', 'wave',
@@ -75,6 +78,7 @@ __all__ = ['file', 'util',
            'Artwork', 'MetadataItem', 'NotAppendable',
            'AudioFile',
            'load_file',
+           'tags'
            ]
 
 ##

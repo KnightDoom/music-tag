@@ -18,7 +18,6 @@ except ImportError:
 
 from music_tag import util
 
-
 def getter_not_implemented(afile, norm_key):
     raise NotImplementedError("getter: '{0}' not implemented for {1}"
                               "".format(norm_key, type(afile)))
@@ -44,15 +43,8 @@ def comp_from_albumartist(afile, norm_key):
             ret = False
     return ret
 
-
-TAG_MAP_ENTRY = namedtuple('TAG_MAP_ENTRY', ('getter', 'setter', 'remover',
-                                             'type', 'sanitizer'))
-TAG_MAP_ENTRY.__new__.__defaults__ = (getter_not_implemented,  # getter
-                                      setter_not_implemented,  # setter
-                                      None,  # remover
-                                      str,  # type
-                                      None,  # sanitizer
-                                      )
+def tags():
+    return(list(_DEFAULT_TAG_MAP.keys()))
 
 
 class MetadataItem(object):
@@ -277,94 +269,14 @@ class NotAppendable(Exception):
     pass
 
 
+
+
 class AudioFile(object):
     tag_format = "None"
     mutagen_kls = None
 
     appendable = True
 
-    # The _DEFAULT_* attributes should not be overridden in subclasses
-    _DEFAULT_TAG_ALIASES = {
-        'title': 'tracktitle',
-        'name': 'tracktitle',
-        'disknumber': 'discnumber',
-        'totaldisks': 'totaldiscs',
-        'disksubtitle': 'discsubtitle',
-    }
-
-    _DEFAULT_TAG_MAP = {
-        'tracktitle': TAG_MAP_ENTRY(type=str),
-        'artist': TAG_MAP_ENTRY(type=str),
-        'album': TAG_MAP_ENTRY(type=str),
-        'albumartist': TAG_MAP_ENTRY(type=str),
-        'composer': TAG_MAP_ENTRY(type=str),
-        'tracknumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
-        'totaltracks': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
-        'discnumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
-        'totaldiscs': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
-        'genre': TAG_MAP_ENTRY(type=str),
-        'year': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_year),
-        'compilation': TAG_MAP_ENTRY(type=bool),
-        'lyrics': TAG_MAP_ENTRY(type=str),
-        'isrc': TAG_MAP_ENTRY(type=str),
-        'comment': TAG_MAP_ENTRY(type=str),
-
-        'artwork': TAG_MAP_ENTRY(type=Artwork),
-        'albumartistsort': TAG_MAP_ENTRY(type=str),
-        'albumsort': TAG_MAP_ENTRY(type=str),
-        'artistsort': TAG_MAP_ENTRY(type=str),
-        'composersort': TAG_MAP_ENTRY(type=str),
-        'titlesort': TAG_MAP_ENTRY(type=str),
-        'work': TAG_MAP_ENTRY(type=str),
-        'movement': TAG_MAP_ENTRY(type=str),
-        'movementtotal': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
-        'movementnumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
-        'key': TAG_MAP_ENTRY(type=str),
-        'media': TAG_MAP_ENTRY(type=str),
-
-        'musicbrainzartistid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzdiscid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzoriginalartistid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzoriginalalbumid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzrecordingid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzalbumartistid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzreleasegroupid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzalbumid': TAG_MAP_ENTRY(type=str),
-        'musicbrainztrackid': TAG_MAP_ENTRY(type=str),
-        'musicbrainzworkid': TAG_MAP_ENTRY(type=str),
-
-        'musicipfingerprint': TAG_MAP_ENTRY(type=str),
-        'musicippuid': TAG_MAP_ENTRY(type=str),
-        'acoustidid': TAG_MAP_ENTRY(type=str),
-        'acoustidfingerprint': TAG_MAP_ENTRY(type=str),
-
-        'subtitle': TAG_MAP_ENTRY(type=str),
-        'discsubtitle': TAG_MAP_ENTRY(type=str),
-
-        '#bitrate': TAG_MAP_ENTRY(getter='bitrate', type=int),
-        '#codec': TAG_MAP_ENTRY(getter='codec', type=str),
-        '#length': TAG_MAP_ENTRY(getter='length', type=float),
-        '#channels': TAG_MAP_ENTRY(getter='channels', type=int),
-        '#bitspersample': TAG_MAP_ENTRY(getter='bits_per_sample', type=int),
-        '#samplerate': TAG_MAP_ENTRY(getter='sample_rate', type=int),
-    }
-
-    _DEFAULT_RESOLVERS = {
-        'albumartist': ('albumartist', albumartist_from_comp, 'artist'),
-        'artist': ('artist', 'albumartist'),
-        'compilation': ('compilation', comp_from_albumartist),
-        'discnumber': ('discnumber',
-                       lambda afile, norm_key: 1
-                       ),
-        'totaldiscs': ('totaldiscs',
-                       lambda afile, norm_key: afile.get('discnumber', 1)
-                       ),
-    }
-
-    _DEFAULT_SINGULAR_KEYS = ['tracknumber', 'totaltracks',
-                              'discnumber', 'totaldiscs',
-                              'year', 'compilation',
-                              ]
 
     # these 3 attributes may be overridden in subclasses
     _TAG_ALIASES = {}
@@ -372,18 +284,17 @@ class AudioFile(object):
     _RESOLVERS = {}
     _SINGULAR_KEYS = []
 
-
     def __init__(self, filename, _mfile=None):
-        self.tag_aliases = self._DEFAULT_TAG_ALIASES.copy()
+        self.tag_aliases = _DEFAULT_TAG_ALIASES.copy()
         self.tag_aliases.update(self._TAG_ALIASES)
 
-        self.tag_map = self._DEFAULT_TAG_MAP.copy()
+        self.tag_map = _DEFAULT_TAG_MAP.copy()
         self.tag_map.update(self._TAG_MAP)
 
-        self.resolvers = self._DEFAULT_RESOLVERS.copy()
+        self.resolvers = _DEFAULT_RESOLVERS.copy()
         self.resolvers.update(self._RESOLVERS)
 
-        self.singular_keys = self._DEFAULT_SINGULAR_KEYS.copy()
+        self.singular_keys = _DEFAULT_SINGULAR_KEYS.copy()
         self.singular_keys += self._SINGULAR_KEYS
 
         self.filename = filename
@@ -667,6 +578,97 @@ class AudioFile(object):
         for k in list(self.keys()):
             del self[k]
 
+
+
+TAG_MAP_ENTRY = namedtuple('TAG_MAP_ENTRY', ('getter', 'setter', 'remover',
+                                             'type', 'sanitizer'))
+TAG_MAP_ENTRY.__new__.__defaults__ = (getter_not_implemented,  # getter
+                                      setter_not_implemented,  # setter
+                                      None,  # remover
+                                      str,  # type
+                                      None,  # sanitizer
+                                      )
+_DEFAULT_TAG_ALIASES = {
+    'title': 'tracktitle',
+    'name': 'tracktitle',
+    'disknumber': 'discnumber',
+    'totaldisks': 'totaldiscs',
+    'disksubtitle': 'discsubtitle',
+}
+
+_DEFAULT_TAG_MAP = {
+    'tracktitle': TAG_MAP_ENTRY(type=str),
+    'artist': TAG_MAP_ENTRY(type=str),
+    'album': TAG_MAP_ENTRY(type=str),
+    'albumartist': TAG_MAP_ENTRY(type=str),
+    'composer': TAG_MAP_ENTRY(type=str),
+    'tracknumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
+    'totaltracks': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
+    'discnumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
+    'totaldiscs': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
+    'genre': TAG_MAP_ENTRY(type=str),
+    'year': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_year),
+    'compilation': TAG_MAP_ENTRY(type=bool),
+    'lyrics': TAG_MAP_ENTRY(type=str),
+    'isrc': TAG_MAP_ENTRY(type=str),
+    'comment': TAG_MAP_ENTRY(type=str),
+
+    'artwork': TAG_MAP_ENTRY(type=Artwork),
+    'albumartistsort': TAG_MAP_ENTRY(type=str),
+    'albumsort': TAG_MAP_ENTRY(type=str),
+    'artistsort': TAG_MAP_ENTRY(type=str),
+    'composersort': TAG_MAP_ENTRY(type=str),
+    'titlesort': TAG_MAP_ENTRY(type=str),
+    'work': TAG_MAP_ENTRY(type=str),
+    'movement': TAG_MAP_ENTRY(type=str),
+    'movementtotal': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
+    'movementnumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
+    'key': TAG_MAP_ENTRY(type=str),
+    'media': TAG_MAP_ENTRY(type=str),
+
+    'musicbrainzartistid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzdiscid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzoriginalartistid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzoriginalalbumid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzrecordingid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzalbumartistid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzreleasegroupid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzalbumid': TAG_MAP_ENTRY(type=str),
+    'musicbrainztrackid': TAG_MAP_ENTRY(type=str),
+    'musicbrainzworkid': TAG_MAP_ENTRY(type=str),
+
+    'musicipfingerprint': TAG_MAP_ENTRY(type=str),
+    'musicippuid': TAG_MAP_ENTRY(type=str),
+    'acoustidid': TAG_MAP_ENTRY(type=str),
+    'acoustidfingerprint': TAG_MAP_ENTRY(type=str),
+
+    'subtitle': TAG_MAP_ENTRY(type=str),
+    'discsubtitle': TAG_MAP_ENTRY(type=str),
+
+    '#bitrate': TAG_MAP_ENTRY(getter='bitrate', type=int),
+    '#codec': TAG_MAP_ENTRY(getter='codec', type=str),
+    '#length': TAG_MAP_ENTRY(getter='length', type=float),
+    '#channels': TAG_MAP_ENTRY(getter='channels', type=int),
+    '#bitspersample': TAG_MAP_ENTRY(getter='bits_per_sample', type=int),
+    '#samplerate': TAG_MAP_ENTRY(getter='sample_rate', type=int),
+}
+
+_DEFAULT_RESOLVERS = {
+    'albumartist': ('albumartist', albumartist_from_comp, 'artist'),
+    'artist': ('artist', 'albumartist'),
+    'compilation': ('compilation', comp_from_albumartist),
+    'discnumber': ('discnumber',
+                   lambda afile, norm_key: 1
+                   ),
+    'totaldiscs': ('totaldiscs',
+                   lambda afile, norm_key: afile.get('discnumber', 1)
+                   ),
+}
+
+_DEFAULT_SINGULAR_KEYS = ['tracknumber', 'totaltracks',
+                          'discnumber', 'totaldiscs',
+                          'year', 'compilation',
+                          ]
 ##
 ## EOF
 ##
