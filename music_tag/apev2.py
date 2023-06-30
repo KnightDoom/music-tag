@@ -127,6 +127,8 @@ class Apev2File(AudioFile):
                                        sanitizer=util.sanitize_int),
         'movementnumber': TAG_MAP_ENTRY(getter='MOVEMENT', setter='MOVEMENT', type=int,
                                         sanitizer=util.sanitize_int),
+        'showmovement': TAG_MAP_ENTRY(getter='SHOWMOVEMENT', setter='SHOWMOVEMENT',
+                                     type=int, sanitizer=util.sanitize_bool),
         'key': TAG_MAP_ENTRY(getter='KEY', setter='KEY', type=str),
         'media': TAG_MAP_ENTRY(getter='Media', setter='Media', type=str),
 

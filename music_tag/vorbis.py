@@ -107,6 +107,7 @@ class OggFile(AudioFile):
         'movement': TAG_MAP_ENTRY(getter='movement', setter='movement', type=str),
         'movementtotal': TAG_MAP_ENTRY(getter='movementtotal', setter='movementtotal', type=int, sanitizer=util.sanitize_int),
         'movementnumber': TAG_MAP_ENTRY(getter='movementnumber', setter='movementnumber', type=int, sanitizer=util.sanitize_int),
+        'showmovement': TAG_MAP_ENTRY(getter='showmovement', setter='showmovement', type=int, sanitizer=util.sanitize_bool),
         'key': TAG_MAP_ENTRY(getter='key', setter='key', type=str),
         'media': TAG_MAP_ENTRY(getter='media', setter='media', type=str),
 

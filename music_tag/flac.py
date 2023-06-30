@@ -80,6 +80,7 @@ class FlacFile(AudioFile):
         'movementnumber': TAG_MAP_ENTRY(getter='movementnumber', setter='movementnumber', type=int, sanitizer=util.sanitize_int),
         'key': TAG_MAP_ENTRY(getter='key', setter='key', type=str),
         'media': TAG_MAP_ENTRY(getter='media', setter='media', type=str),
+        'showmovement': TAG_MAP_ENTRY(getter='showmovement', setter='showmovement', type=int, sanitizer=util.sanitize_bool),
 
         'musicbrainzartistid': TAG_MAP_ENTRY(getter='musicbrainz_artistid', setter='musicbrainz_artistid', type=str),
         'musicbrainzdiscid': TAG_MAP_ENTRY(getter='musicbrainz_discid', setter='musicbrainz_discid', type=str),

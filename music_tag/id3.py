@@ -250,6 +250,7 @@ _TAG_MAP_ID3_2_4 = {
     'movementnumber': TAG_MAP_ENTRY(getter='MVIN', setter='MVIN', type=int, sanitizer=util.sanitize_int),
     'key': TAG_MAP_ENTRY(getter='TKEY', setter='TKEY', type=str),
     'media': TAG_MAP_ENTRY(getter='TMED', setter='TMED', type=str),
+    'showmovement': TAG_MAP_ENTRY(getter='TXXX:SHOWMOVEMENT', setter='TXXX:SHOWMOVEMENT', type=int, sanitizer=util.sanitize_bool),
 
     'musicbrainzartistid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Artist Id', setter='TXXX:MusicBrainz Artist Id', type=str),
     'musicbrainzdiscid': TAG_MAP_ENTRY(getter='TXXX:MusicBrainz Disc Id', setter='TXXX:MusicBrainz Disc Id', type=str),

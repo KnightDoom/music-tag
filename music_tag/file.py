@@ -608,7 +608,7 @@ _DEFAULT_TAG_MAP = {
     'totaldiscs': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
     'genre': TAG_MAP_ENTRY(type=str),
     'year': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_year),
-    'compilation': TAG_MAP_ENTRY(type=bool),
+    'compilation': TAG_MAP_ENTRY(type=bool, sanitizer=util.sanitize_bool),
     'lyrics': TAG_MAP_ENTRY(type=str),
     'isrc': TAG_MAP_ENTRY(type=str),
     'comment': TAG_MAP_ENTRY(type=str),
@@ -625,6 +625,7 @@ _DEFAULT_TAG_MAP = {
     'movementnumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
     'key': TAG_MAP_ENTRY(type=str),
     'media': TAG_MAP_ENTRY(type=str),
+    'showmovement': TAG_MAP_ENTRY(type=bool, sanitizer=util.sanitize_bool),
 
     'musicbrainzartistid': TAG_MAP_ENTRY(type=str),
     'musicbrainzdiscid': TAG_MAP_ENTRY(type=str),
