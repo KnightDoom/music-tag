@@ -609,6 +609,7 @@ _DEFAULT_TAG_MAP = {
     'genre': TAG_MAP_ENTRY(type=str),
     'year': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_year),
     'compilation': TAG_MAP_ENTRY(type=bool, sanitizer=util.sanitize_bool),
+    'label': TAG_MAP_ENTRY(type=str),
     'lyrics': TAG_MAP_ENTRY(type=str),
     'isrc': TAG_MAP_ENTRY(type=str),
     'comment': TAG_MAP_ENTRY(type=str),

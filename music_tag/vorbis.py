@@ -88,6 +88,7 @@ class OggFile(AudioFile):
                               setter=('date', 'originaldate'),
                               type=int,
                               sanitizer=util.sanitize_year),
+        'label': TAG_MAP_ENTRY(getter='label', setter='label', type=str),
         'lyrics': TAG_MAP_ENTRY(getter='lyrics', setter='lyrics', type=str),
         'isrc': TAG_MAP_ENTRY(getter='isrc', setter='isrc', type=str),
         'comment': TAG_MAP_ENTRY(getter='comment', setter='comment', type=str),

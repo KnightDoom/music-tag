@@ -37,6 +37,7 @@ characters. In other words, ``Album Artist``, ``album-artist``, and
 - ``composer``
 - ``discnumber``
 - ``genre``
+- ``label``
 - ``lyrics``
 - ``totaldiscs``
 - ``totaltracks``

@@ -182,6 +182,7 @@ class Mp4File(AudioFile):
         'genre': TAG_MAP_ENTRY(getter='©gen', setter='©gen', type=str),
         'year': TAG_MAP_ENTRY(getter='©day', setter='©day', type=int,
                               sanitizer=util.sanitize_year),
+        'label': TAG_MAP_ENTRY(getter='©pub', setter='©pub', type=str),
         'lyrics': TAG_MAP_ENTRY(getter='©lyr', setter='©lyr', type=str),
         'isrc': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, _MP4_ISRC_KEY),
                               setter=lambda f, k, v: freeform_set(f, _MP4_ISRC_KEY, v),
