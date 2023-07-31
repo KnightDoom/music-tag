@@ -59,18 +59,19 @@ def sanitize_bool(val):
         return int(val) !=0
 
 def sanitize_replaygain_gain(val):
-    m = re.match(r'^(-?\d+(\.\d{1,2})?) dB$', str(val))
+    m = re.match(r"^(-?\d+(\.\d{1,2})?) dB$", str(val))
     if m:
-        return float(m.group(1))
+        return float(m.match(0))
     else:
-        raise ValueError('{0} is not a valid ReplayGain gain value'.format(val))
+        raise ValueError("{0} is not a valid ReplayGain gain value".format(val))
+
 
 def sanitize_replaygain_peak(val):
-    m = re.match(r'^.*?([0-9]*\.?[0-9]+).*?$', str(val))
+    m = re.match(r"^-?\d+(\.\d*)?$", str(val))
     if m:
-        ret = float(m.group(1))
+        ret = float(m.match(0))
     else:
-        raise ValueError('{0} is not a valid ReplayGain peak value'.format(val))
+        raise ValueError("{0} is not a valid ReplayGain peak value".format(val))
     ret = math.floor(ret * 10**6) / 10**6
     return ret
 
