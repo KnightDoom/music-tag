@@ -59,22 +59,19 @@ def sanitize_bool(val):
         return int(val) !=0
 
 def sanitize_replaygain_gain(val):
-    m = re.match(r'^(-?\d+(\.\d{1,2})?) dB$', val)
+    m = re.match(r'^(-?\d+(\.\d{1,2})?) dB$', str(val))
     if m:
         return float(m.group(1))
     else:
         raise ValueError('{0} is not a valid ReplayGain gain value'.format(val))
 
 def sanitize_replaygain_peak(val):
-    try:
-        ret = float(val)
-    except ValueError:
-        m = re.match(r'^.*?([0-9]*\.?[0-9]+).*?$', val)
-        if m:
-            ret = float(m.group(1))
-        else:
-            raise ValueError('{0} is not a valid ReplayGain peak value'.format(val))
-    ret = math.floor(ret * 10**6) / 10**6  # Round down to 6 decimal places
+    m = re.match(r'^.*?([0-9]*\.?[0-9]+).*?$', str(val))
+    if m:
+        ret = float(m.group(1))
+    else:
+        raise ValueError('{0} is not a valid ReplayGain peak value'.format(val))
+    ret = math.floor(ret * 10**6) / 10**6
     return ret
 
 def get_easy_tracknum(afile, norm_key, _tag_name='tracknumber'):
