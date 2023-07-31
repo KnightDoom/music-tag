@@ -64,6 +64,7 @@ def sanitize_replaygain_gain(val):
     except ValueError:
         raise ValueError('{0} is not a valid ReplayGain gain value'.format(val))
     ret = str(math.floor(ret * 100) / 100) + ' dB'
+    return ret
 
 
 def sanitize_replaygain_peak(val):
