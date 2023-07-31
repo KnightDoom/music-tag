@@ -102,6 +102,11 @@ class FlacFile(AudioFile):
         'subtitle': TAG_MAP_ENTRY(getter='subtitle', setter='subtitle', type=str),
         'discsubtitle': TAG_MAP_ENTRY(getter='discsubtitle', setter='discsubtitle', type=str),
 
+        'replaygaintrackgain': TAG_MAP_ENTRY(getter='replaygain_track_gain', setter='replaygain_track_gain', type=str, sanitizer=util.sanitize_replaygain_gain),
+        'replaygaintrackpeak': TAG_MAP_ENTRY(getter='replaygain_track_peak', setter='replaygain_track_peak', type=float, sanitizer=util.sanitize_replaygain_peak),
+        'replaygainalbumgain': TAG_MAP_ENTRY(getter='replaygain_album_gain', setter='replaygain_album_gain', type=str, sanitizer=util.sanitize_replaygain_gain),
+        'replaygainalbumpeak': TAG_MAP_ENTRY(getter='replaygain_album_peak', setter='replaygain_album_peak', type=float, sanitizer=util.sanitize_replaygain_peak),
+
         '#codec': TAG_MAP_ENTRY(getter=lambda afile, norm_key: 'flac',
                                 type=str),
     }

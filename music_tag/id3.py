@@ -272,6 +272,11 @@ _TAG_MAP_ID3_2_4 = {
 
     'subtitle': TAG_MAP_ENTRY(getter='TIT3', setter='TIT3', type=str),
     'discsubtitle': TAG_MAP_ENTRY(getter='TSST', setter='TSST', type=str),
+
+    'replaygaintrackgain': TAG_MAP_ENTRY(getter='TXXX:REPLAYGAIN_TRACK_GAIN', setter='TXXX:REPLAYGAIN_TRACK_GAIN', type=str, sanitizer=util.sanitize_replaygain_gain),
+    'replaygaintrackpeak': TAG_MAP_ENTRY(getter='TXXX:REPLAYGAIN_TRACK_PEAK', setter='TXXX:REPLAYGAIN_TRACK_PEAK', type=float, sanitizer=util.sanitize_replaygain_peak),
+    'replaygainalbumgain': TAG_MAP_ENTRY(getter='TXXX:REPLAYGAIN_ALBUM_GAIN', setter='TXXX:REPLAYGAIN_ALBUM_GAIN', type=str, sanitizer=util.sanitize_replaygain_gain),
+    'replaygainalbumpeak': TAG_MAP_ENTRY(getter='TXXX:REPLAYGAIN_ALBUM_PEAK', setter='TXXX:REPLAYGAIN_ALBUM_PEAK', type=float, sanitizer=util.sanitize_replaygain_peak),
 }
 
 

@@ -282,6 +282,23 @@ class Mp4File(AudioFile):
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:DISCSUBTITLE', v),
                               remover='----:com.apple.iTunes:DISCSUBTITLE',
                               type=str),
+
+        'replaygaintrackgain': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:ReplayGain Track Gain'), 
+                              setter=lambda f, k: freeform_set(f, '----:com.apple.iTunes:ReplayGain Track Gain', v),
+                              remover='----:com.apple.iTunes:ReplayGain Track Gain',
+                              type=str),
+        'replaygaintrackpeak': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:ReplayGain Track Peak'), 
+                              setter=lambda f, k: freeform_set(f, '----:com.apple.iTunes:ReplayGain Track Peak', v),
+                              remover='----:com.apple.iTunes:ReplayGain Track Peak',
+                              type=str),
+        'replaygainalbumgain': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:ReplayGain Album Gain'), 
+                              setter=lambda f, k: freeform_set(f, '----:com.apple.iTunes:ReplayGain Album Gain', v),
+                              remover='----:com.apple.iTunes:ReplayGain Album Gain',
+                              type=str),
+        'replaygainalbumpeak': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:ReplayGain Album Peak'), 
+                              setter=lambda f, k: freeform_set(f, '----:com.apple.iTunes:ReplayGain Album Peak', v),
+                              remover='----:com.apple.iTunes:ReplayGain Album Peak',
+                              type=str),
     }
 
 

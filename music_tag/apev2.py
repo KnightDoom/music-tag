@@ -151,6 +151,11 @@ class Apev2File(AudioFile):
 
         'subtitle': TAG_MAP_ENTRY(getter='Subtitle', setter='Subtitle', type=str),
         'discsubtitle': TAG_MAP_ENTRY(getter='DiscSubtitle', setter='DiscSubtitle', type=str),
+
+        'replaygaintrackgain': TAG_MAP_ENTRY(getter='REPLAYGAIN_TRACK_GAIN', setter='REPLAYGAIN_TRACK_GAIN', type=str, sanitizer=util.sanitize_replaygain_gain),
+        'replaygaintrackpeak': TAG_MAP_ENTRY(getter='REPLAYGAIN_TRACK_PEAK', setter='REPLAYGAIN_TRACK_PEAK', type=float, sanitizer=util.sanitize_replaygain_peak),
+        'replaygainalbumgain': TAG_MAP_ENTRY(getter='REPLAYGAIN_ALBUM_GAIN', setter='REPLAYGAIN_ALBUM_GAIN', type=str, sanitizer=util.sanitize_replaygain_gain),
+        'replaygainalbumpeak': TAG_MAP_ENTRY(getter='REPLAYGAIN_ALBUM_PEAK', setter='REPLAYGAIN_ALBUM_PEAK', type=float, sanitizer=util.sanitize_replaygain_peak),
     }
 
     def _ft_getter(self, key):

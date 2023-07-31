@@ -1,3 +1,9 @@
+**This fork adds additional tags for Zotify which may or may not be compliant
+with relevant standards.**
+
+**It is highly recommended you use one of the upstream versions for use outside
+of Zotify. No support will be given for other use cases.**
+
 # music-tag
 
 music-tag is a library for editing audio metadata with an interface

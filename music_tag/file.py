@@ -647,6 +647,11 @@ _DEFAULT_TAG_MAP = {
     'subtitle': TAG_MAP_ENTRY(type=str),
     'discsubtitle': TAG_MAP_ENTRY(type=str),
 
+    'replaygaintrackgain': TAG_MAP_ENTRY(type=str, sanitizer=util.sanitize_replaygain_gain),
+    'replaygaintrackpeak': TAG_MAP_ENTRY(type=float, sanitizer=util.sanitize_replaygain_peak),
+    'replaygainalbumgain': TAG_MAP_ENTRY(type=str, sanitizer=util.sanitize_replaygain_gain),
+    'replaygainalbumpeak': TAG_MAP_ENTRY(type=float, sanitizer=util.sanitize_replaygain_peak),
+
     '#bitrate': TAG_MAP_ENTRY(getter='bitrate', type=int),
     '#codec': TAG_MAP_ENTRY(getter='codec', type=str),
     '#length': TAG_MAP_ENTRY(getter='length', type=float),
