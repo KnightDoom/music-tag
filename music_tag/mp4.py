@@ -206,6 +206,7 @@ class Mp4File(AudioFile):
         'movementname': TAG_MAP_ENTRY(getter='©mvn', setter='©mvn', type=str),
         'movementtotal': TAG_MAP_ENTRY(getter='mvc', setter='mvc', type=int, sanitizer=util.sanitize_int),
         'movement': TAG_MAP_ENTRY(getter='mvi', setter='mvi', type=int, sanitizer=util.sanitize_int),
+        'conductor': TAG_MAP_ENTRY(getter='@con', setter='@con', type=str),
         'showmovement': TAG_MAP_ENTRY(getter='shwm', setter='shwm', type=bool, sanitizer=util.sanitize_bool),
         'key': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:initialkey'),
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:initialkey', v),

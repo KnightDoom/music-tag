@@ -74,6 +74,7 @@ class FlacFile(AudioFile):
         'albumsort': TAG_MAP_ENTRY(getter='albumsort', setter='albumsort', type=str),
         'artistsort': TAG_MAP_ENTRY(getter='artistsort', setter='artistsort', type=str),
         'composersort': TAG_MAP_ENTRY(getter='composersort', setter='composersort', type=str),
+        'conductor': TAG_MAP_ENTRY(getter='conductor', setter='conductor', type=str),
         'titlesort': TAG_MAP_ENTRY(getter='titlesort', setter='titlesort', type=str),
         'work': TAG_MAP_ENTRY(getter='work', setter='work', type=str),
         'movementname': TAG_MAP_ENTRY(getter='movementname', setter='movementname', type=str),

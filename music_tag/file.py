@@ -619,6 +619,7 @@ _DEFAULT_TAG_MAP = {
     'albumsort': TAG_MAP_ENTRY(type=str),
     'artistsort': TAG_MAP_ENTRY(type=str),
     'composersort': TAG_MAP_ENTRY(type=str),
+    'conductor': TAG_MAP_ENTRY(type=str),
     'titlesort': TAG_MAP_ENTRY(type=str),
     'work': TAG_MAP_ENTRY(type=str),
     'movementname': TAG_MAP_ENTRY(type=str),
