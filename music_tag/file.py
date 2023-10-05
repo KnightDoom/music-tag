@@ -576,7 +576,8 @@ class AudioFile(object):
 
     def remove_all(self):
         for k in list(self.keys()):
-            del self[k]
+            if not k.startswith('#'):
+                del self[k]
 
 
 
