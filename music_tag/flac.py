@@ -41,7 +41,7 @@ class FlacFile(AudioFile):
     mutagen_kls = mutagen.flac.FLAC
 
     _TAG_MAP = {
-        'tracktitle': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
+        'title': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
         'artist': TAG_MAP_ENTRY(getter='artist', setter='artist', type=str),
         'album': TAG_MAP_ENTRY(getter='album', setter='album', type=str),
         'albumartist': TAG_MAP_ENTRY(getter='albumartist', setter='albumartist',

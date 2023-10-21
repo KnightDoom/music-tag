@@ -105,7 +105,7 @@ def rm_pictures(afile, norm_key):
 # https://github.com/tilo/ID3/tree/master/docs
 
 _TAG_MAP_ID3_1 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
+    'title': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
     'artist': TAG_MAP_ENTRY(getter='artist', setter='artist', type=str),
     'album': TAG_MAP_ENTRY(getter='album', setter='album', type=str),
     'year': TAG_MAP_ENTRY(getter='year', setter='year', type=int,
@@ -116,7 +116,7 @@ _TAG_MAP_ID3_1 = {
 }
 
 _TAG_MAP_ID3_2_2 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='TT2', setter='TT2', type=str),
+    'title': TAG_MAP_ENTRY(getter='TT2', setter='TT2', type=str),
     'artist': TAG_MAP_ENTRY(getter='TP1', setter='TP1', type=str),
     'album': TAG_MAP_ENTRY(getter='TAL', setter='TAL', type=str),
     'albumartist': TAG_MAP_ENTRY(getter='TP2', setter='TP2', type=str),
@@ -158,7 +158,7 @@ _TAG_MAP_ID3_2_2 = {
 }
 
 _TAG_MAP_ID3_2_3 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
+    'title': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
     'artist': TAG_MAP_ENTRY(getter='TPE1', setter='TPE1', type=str),
     'album': TAG_MAP_ENTRY(getter='TALB', setter='TALB', type=str),
     'albumartist': TAG_MAP_ENTRY(getter='TPE2', setter='TPE2', type=str),
@@ -201,7 +201,7 @@ _TAG_MAP_ID3_2_3 = {
 }
 
 _TAG_MAP_ID3_2_4 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
+    'title': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
     'artist': TAG_MAP_ENTRY(getter='TPE1', setter='TPE1', type=str),
     'album': TAG_MAP_ENTRY(getter='TALB', setter='TALB', type=str),
     'albumartist': TAG_MAP_ENTRY(getter='TPE2', setter='TPE2', type=str),

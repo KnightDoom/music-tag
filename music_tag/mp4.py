@@ -154,7 +154,7 @@ class Mp4File(AudioFile):
     mutagen_kls = mutagen.mp4.MP4
 
     _TAG_MAP = {
-        'tracktitle': TAG_MAP_ENTRY(getter='©nam', setter='©nam', type=str),
+        'title': TAG_MAP_ENTRY(getter='©nam', setter='©nam', type=str),
         'artist': TAG_MAP_ENTRY(getter='©ART', setter='©ART', type=str),
         'album': TAG_MAP_ENTRY(getter='©alb', setter='©alb', type=str),
         'albumartist': TAG_MAP_ENTRY(getter='aART', setter='aART', type=str),

@@ -68,7 +68,7 @@ class Apev2File(AudioFile):
     mutagen_kls = mutagen.apev2.APEv2File
 
     _TAG_MAP = {
-        'tracktitle': TAG_MAP_ENTRY(getter='Title', setter='Title', type=str),
+        'title': TAG_MAP_ENTRY(getter='Title', setter='Title', type=str),
         'artist': TAG_MAP_ENTRY(getter='Artist', setter='Artist', type=str),
         'album': TAG_MAP_ENTRY(getter='Album', setter='Album', type=str),
         'albumartist': TAG_MAP_ENTRY(getter='Album Artist', setter='Album Artist',
@@ -117,9 +117,9 @@ class Apev2File(AudioFile):
         '#samplerate': TAG_MAP_ENTRY(getter=lambda afile, norm_key: None,
                                      type=int),
 
-        'albumartistsort': TAG_MAP_ENTRY(getter='Albm Artist Sort', setter='Albm Artist Sort', type=str),
-        'albumsort': TAG_MAP_ENTRY(getter='Album Sort', setter='Album Sort', type=str),
-        'artistsort': TAG_MAP_ENTRY(getter='Artist Sort', setter='Artist Sort', type=str),
+        'albumartistsort': TAG_MAP_ENTRY(getter='ALBUMARTISTSORT', setter='ALBUMARTISTSORT', type=str),
+        'albumsort': TAG_MAP_ENTRY(getter='ALBUMSORT', setter='ALBUMSORT', type=str),
+        'artistsort': TAG_MAP_ENTRY(getter='ARTISTSORT', setter='ARTISTSORT', type=str),
         'composersort': TAG_MAP_ENTRY(getter='Composer Sort', setter='Composer Sort', type=str),
         'titlesort': TAG_MAP_ENTRY(getter='Title Sort', setter='Title Sort', type=str),
         'work': TAG_MAP_ENTRY(getter='Work', setter='Work', type=str),

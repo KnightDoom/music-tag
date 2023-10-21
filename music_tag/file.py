@@ -590,15 +590,15 @@ TAG_MAP_ENTRY.__new__.__defaults__ = (getter_not_implemented,  # getter
                                       None,  # sanitizer
                                       )
 _DEFAULT_TAG_ALIASES = {
-    'title': 'tracktitle',
-    'name': 'tracktitle',
+    'tracktitle': 'title',
+    'name': 'title',
     'disknumber': 'discnumber',
     'totaldisks': 'totaldiscs',
     'disksubtitle': 'discsubtitle',
 }
 
 _DEFAULT_TAG_MAP = {
-    'tracktitle': TAG_MAP_ENTRY(type=str),
+    'title': TAG_MAP_ENTRY(type=str),
     'artist': TAG_MAP_ENTRY(type=str),
     'album': TAG_MAP_ENTRY(type=str),
     'albumartist': TAG_MAP_ENTRY(type=str),
