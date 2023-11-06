@@ -102,7 +102,7 @@ class Apev2File(AudioFile):
         'lyrics': TAG_MAP_ENTRY(getter='Lyrics', setter='Lyrics', type=str),
         'isrc': TAG_MAP_ENTRY(getter='ISRC', setter='ISRC', type=str),
         'compilation': TAG_MAP_ENTRY(getter='Compilation', setter='Compilation',
-                                     type=int, sanitizer=util.sanitize_bool),
+                                     type=bool, sanitizer=util.sanitize_bool),
 
         'artwork': TAG_MAP_ENTRY(getter=get_pictures, setter=set_pictures,
                                  remover=list(pic_tag2type.keys()),

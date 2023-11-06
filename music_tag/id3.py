@@ -192,7 +192,7 @@ _TAG_MAP_ID3_2_3 = {
     'label': TAG_MAP_ENTRY(getter='TPUB', setter='TPUB', type=str),
     'lyrics': TAG_MAP_ENTRY(getter='USLT', setter='USLT', type=str),
     'isrc': TAG_MAP_ENTRY(getter='TSRC', setter='TSRC', type=str),
-    'compilation': TAG_MAP_ENTRY(getter='TCMP', setter='TCMP', type=int,
+    'compilation': TAG_MAP_ENTRY(getter='TCMP', setter='TCMP', type=bool,
                                  sanitizer=util.sanitize_bool),
 
     'artwork': TAG_MAP_ENTRY(getter=get_pictures, setter=set_pictures,

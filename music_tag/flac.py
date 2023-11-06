@@ -64,7 +64,7 @@ class FlacFile(AudioFile):
         'isrc': TAG_MAP_ENTRY(getter='isrc', setter='isrc', type=str),
         'comment': TAG_MAP_ENTRY(getter='comment', setter='comment', type=str),
         'compilation': TAG_MAP_ENTRY(getter='compilation', setter='compilation',
-                                     type=int, sanitizer=util.sanitize_bool),
+                                     type=bool, sanitizer=util.sanitize_bool),
 
         'artwork': TAG_MAP_ENTRY(getter=get_pictures, setter=set_pictures,
                                  remover=rm_pictures,
