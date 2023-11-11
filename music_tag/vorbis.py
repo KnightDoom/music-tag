@@ -71,6 +71,7 @@ class OggFile(AudioFile):
         'albumartist': TAG_MAP_ENTRY(getter='albumartist', setter='albumartist',
                                      type=str),
         'composer': TAG_MAP_ENTRY(getter='composer', setter='composer', type=str),
+        'conductor': TAG_MAP_ENTRY(getter='conductor', setter='conductor', type=str),
         'tracknumber': TAG_MAP_ENTRY(getter='tracknumber', setter='tracknumber',
                                      type=int,
                                      sanitizer=util.sanitize_int),
