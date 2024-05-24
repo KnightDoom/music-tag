@@ -2,6 +2,7 @@
 
 from collections import namedtuple
 import hashlib
+import binascii
 import io
 import shutil
 
@@ -233,6 +234,13 @@ class Artwork(object):
         md5.update(self.data)
         return "{0} {1}x{2} {3}".format(self.mime, self.width, self.height,
                                         md5.hexdigest())
+    def __hash__(self):
+        return binascii.crc32(self.data)
+
+    def __eq__(self, other):
+        if not(isinstance(other, type(self))):
+            return False
+        return self.data == other.data
 
 
 class RawProxy(object):
