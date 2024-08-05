@@ -2,6 +2,7 @@
 
 from collections import namedtuple
 import hashlib
+import binascii
 import io
 import shutil
 
@@ -233,6 +234,13 @@ class Artwork(object):
         md5.update(self.data)
         return "{0} {1}x{2} {3}".format(self.mime, self.width, self.height,
                                         md5.hexdigest())
+    def __hash__(self):
+        return binascii.crc32(self.data)
+
+    def __eq__(self, other):
+        if not(isinstance(other, type(self))):
+            return False
+        return self.data == other.data
 
 
 class RawProxy(object):
@@ -576,7 +584,8 @@ class AudioFile(object):
 
     def remove_all(self):
         for k in list(self.keys()):
-            del self[k]
+            if not k.startswith('#'):
+                del self[k]
 
 
 
@@ -589,15 +598,15 @@ TAG_MAP_ENTRY.__new__.__defaults__ = (getter_not_implemented,  # getter
                                       None,  # sanitizer
                                       )
 _DEFAULT_TAG_ALIASES = {
-    'title': 'tracktitle',
-    'name': 'tracktitle',
+    'tracktitle': 'title',
+    'name': 'title',
     'disknumber': 'discnumber',
     'totaldisks': 'totaldiscs',
     'disksubtitle': 'discsubtitle',
 }
 
 _DEFAULT_TAG_MAP = {
-    'tracktitle': TAG_MAP_ENTRY(type=str),
+    'title': TAG_MAP_ENTRY(type=str),
     'artist': TAG_MAP_ENTRY(type=str),
     'album': TAG_MAP_ENTRY(type=str),
     'albumartist': TAG_MAP_ENTRY(type=str),
@@ -619,11 +628,12 @@ _DEFAULT_TAG_MAP = {
     'albumsort': TAG_MAP_ENTRY(type=str),
     'artistsort': TAG_MAP_ENTRY(type=str),
     'composersort': TAG_MAP_ENTRY(type=str),
+    'conductor': TAG_MAP_ENTRY(type=str),
     'titlesort': TAG_MAP_ENTRY(type=str),
     'work': TAG_MAP_ENTRY(type=str),
-    'movement': TAG_MAP_ENTRY(type=str),
+    'movementname': TAG_MAP_ENTRY(type=str),
     'movementtotal': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
-    'movementnumber': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
+    'movement': TAG_MAP_ENTRY(type=int, sanitizer=util.sanitize_int),
     'key': TAG_MAP_ENTRY(type=str),
     'media': TAG_MAP_ENTRY(type=str),
     'showmovement': TAG_MAP_ENTRY(type=bool, sanitizer=util.sanitize_bool),

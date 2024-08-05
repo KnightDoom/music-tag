@@ -105,7 +105,7 @@ def rm_pictures(afile, norm_key):
 # https://github.com/tilo/ID3/tree/master/docs
 
 _TAG_MAP_ID3_1 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
+    'title': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
     'artist': TAG_MAP_ENTRY(getter='artist', setter='artist', type=str),
     'album': TAG_MAP_ENTRY(getter='album', setter='album', type=str),
     'year': TAG_MAP_ENTRY(getter='year', setter='year', type=int,
@@ -116,7 +116,7 @@ _TAG_MAP_ID3_1 = {
 }
 
 _TAG_MAP_ID3_2_2 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='TT2', setter='TT2', type=str),
+    'title': TAG_MAP_ENTRY(getter='TT2', setter='TT2', type=str),
     'artist': TAG_MAP_ENTRY(getter='TP1', setter='TP1', type=str),
     'album': TAG_MAP_ENTRY(getter='TAL', setter='TAL', type=str),
     'albumartist': TAG_MAP_ENTRY(getter='TP2', setter='TP2', type=str),
@@ -158,10 +158,11 @@ _TAG_MAP_ID3_2_2 = {
 }
 
 _TAG_MAP_ID3_2_3 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
+    'title': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
     'artist': TAG_MAP_ENTRY(getter='TPE1', setter='TPE1', type=str),
     'album': TAG_MAP_ENTRY(getter='TALB', setter='TALB', type=str),
     'albumartist': TAG_MAP_ENTRY(getter='TPE2', setter='TPE2', type=str),
+    'conductor': TAG_MAP_ENTRY(getter='TPE3', setter='TPE3', type=str),
     'composer': TAG_MAP_ENTRY(getter='TCOM', setter='TCOM', type=str),
     'tracknumber': TAG_MAP_ENTRY(getter=get_tracknumB,
                                  setter=set_tracknumB,
@@ -191,7 +192,7 @@ _TAG_MAP_ID3_2_3 = {
     'label': TAG_MAP_ENTRY(getter='TPUB', setter='TPUB', type=str),
     'lyrics': TAG_MAP_ENTRY(getter='USLT', setter='USLT', type=str),
     'isrc': TAG_MAP_ENTRY(getter='TSRC', setter='TSRC', type=str),
-    'compilation': TAG_MAP_ENTRY(getter='TCMP', setter='TCMP', type=int,
+    'compilation': TAG_MAP_ENTRY(getter='TCMP', setter='TCMP', type=bool,
                                  sanitizer=util.sanitize_bool),
 
     'artwork': TAG_MAP_ENTRY(getter=get_pictures, setter=set_pictures,
@@ -200,10 +201,11 @@ _TAG_MAP_ID3_2_3 = {
 }
 
 _TAG_MAP_ID3_2_4 = {
-    'tracktitle': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
+    'title': TAG_MAP_ENTRY(getter='TIT2', setter='TIT2', type=str),
     'artist': TAG_MAP_ENTRY(getter='TPE1', setter='TPE1', type=str),
     'album': TAG_MAP_ENTRY(getter='TALB', setter='TALB', type=str),
     'albumartist': TAG_MAP_ENTRY(getter='TPE2', setter='TPE2', type=str),
+    'conductor': TAG_MAP_ENTRY(getter='TPE3', setter='TPE3', type=str),
     'composer': TAG_MAP_ENTRY(getter='TCOM', setter='TCOM', type=str),
     'tracknumber': TAG_MAP_ENTRY(getter=get_tracknumB,
                                  setter=set_tracknumB,
@@ -247,9 +249,9 @@ _TAG_MAP_ID3_2_4 = {
     'composersort': TAG_MAP_ENTRY(getter='TSOC', setter='TSOC', type=str),
     'titlesort': TAG_MAP_ENTRY(getter='TSOT', setter='TSOT', type=str),
     'work': TAG_MAP_ENTRY(getter=('TIT1', 'TXXX:WORK'), setter=('TIT1', 'TXXX:WORK'), type=str),
-    'movement': TAG_MAP_ENTRY(getter='MVNM', setter='MVNM', type=str),
+    'movementname': TAG_MAP_ENTRY(getter='MVNM', setter='MVNM', type=str),
     'movementtotal': TAG_MAP_ENTRY(getter='MVIN', setter='MVIN', type=int, sanitizer=util.sanitize_int),
-    'movementnumber': TAG_MAP_ENTRY(getter='MVIN', setter='MVIN', type=int, sanitizer=util.sanitize_int),
+    'movement': TAG_MAP_ENTRY(getter='MVIN', setter='MVIN', type=int, sanitizer=util.sanitize_int),
     'key': TAG_MAP_ENTRY(getter='TKEY', setter='TKEY', type=str),
     'media': TAG_MAP_ENTRY(getter='TMED', setter='TMED', type=str),
     'showmovement': TAG_MAP_ENTRY(getter='TXXX:SHOWMOVEMENT', setter='TXXX:SHOWMOVEMENT', type=int, sanitizer=util.sanitize_bool),

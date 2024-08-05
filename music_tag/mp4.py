@@ -154,7 +154,7 @@ class Mp4File(AudioFile):
     mutagen_kls = mutagen.mp4.MP4
 
     _TAG_MAP = {
-        'tracktitle': TAG_MAP_ENTRY(getter='©nam', setter='©nam', type=str),
+        'title': TAG_MAP_ENTRY(getter='©nam', setter='©nam', type=str),
         'artist': TAG_MAP_ENTRY(getter='©ART', setter='©ART', type=str),
         'album': TAG_MAP_ENTRY(getter='©alb', setter='©alb', type=str),
         'albumartist': TAG_MAP_ENTRY(getter='aART', setter='aART', type=str),
@@ -203,9 +203,10 @@ class Mp4File(AudioFile):
         'composersort': TAG_MAP_ENTRY(getter='soco', setter='soco', type=str),
         'titlesort': TAG_MAP_ENTRY(getter='sonm', setter='sonm', type=str),
         'work': TAG_MAP_ENTRY(getter='©wrk', setter='©wrk', type=str),
-        'movement': TAG_MAP_ENTRY(getter='©mvn', setter='©mvn', type=str),
+        'movementname': TAG_MAP_ENTRY(getter='©mvn', setter='©mvn', type=str),
         'movementtotal': TAG_MAP_ENTRY(getter='mvc', setter='mvc', type=int, sanitizer=util.sanitize_int),
-        'movementnumber': TAG_MAP_ENTRY(getter='mvi', setter='mvi', type=int, sanitizer=util.sanitize_int),
+        'movement': TAG_MAP_ENTRY(getter='mvi', setter='mvi', type=int, sanitizer=util.sanitize_int),
+        'conductor': TAG_MAP_ENTRY(getter='@con', setter='@con', type=str),
         'showmovement': TAG_MAP_ENTRY(getter='shwm', setter='shwm', type=bool, sanitizer=util.sanitize_bool),
         'key': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:initialkey'),
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:initialkey', v),

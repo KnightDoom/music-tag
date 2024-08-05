@@ -41,7 +41,7 @@ class FlacFile(AudioFile):
     mutagen_kls = mutagen.flac.FLAC
 
     _TAG_MAP = {
-        'tracktitle': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
+        'title': TAG_MAP_ENTRY(getter='title', setter='title', type=str),
         'artist': TAG_MAP_ENTRY(getter='artist', setter='artist', type=str),
         'album': TAG_MAP_ENTRY(getter='album', setter='album', type=str),
         'albumartist': TAG_MAP_ENTRY(getter='albumartist', setter='albumartist',
@@ -64,7 +64,7 @@ class FlacFile(AudioFile):
         'isrc': TAG_MAP_ENTRY(getter='isrc', setter='isrc', type=str),
         'comment': TAG_MAP_ENTRY(getter='comment', setter='comment', type=str),
         'compilation': TAG_MAP_ENTRY(getter='compilation', setter='compilation',
-                                     type=int, sanitizer=util.sanitize_bool),
+                                     type=bool, sanitizer=util.sanitize_bool),
 
         'artwork': TAG_MAP_ENTRY(getter=get_pictures, setter=set_pictures,
                                  remover=rm_pictures,
@@ -74,11 +74,12 @@ class FlacFile(AudioFile):
         'albumsort': TAG_MAP_ENTRY(getter='albumsort', setter='albumsort', type=str),
         'artistsort': TAG_MAP_ENTRY(getter='artistsort', setter='artistsort', type=str),
         'composersort': TAG_MAP_ENTRY(getter='composersort', setter='composersort', type=str),
+        'conductor': TAG_MAP_ENTRY(getter='conductor', setter='conductor', type=str),
         'titlesort': TAG_MAP_ENTRY(getter='titlesort', setter='titlesort', type=str),
         'work': TAG_MAP_ENTRY(getter='work', setter='work', type=str),
-        'movement': TAG_MAP_ENTRY(getter='movement', setter='movement', type=str),
+        'movementname': TAG_MAP_ENTRY(getter='movementname', setter='movementname', type=str),
         'movementtotal': TAG_MAP_ENTRY(getter='movementtotal', setter='movementtotal', type=int, sanitizer=util.sanitize_int),
-        'movementnumber': TAG_MAP_ENTRY(getter='movementnumber', setter='movementnumber', type=int, sanitizer=util.sanitize_int),
+        'movement': TAG_MAP_ENTRY(getter='movement', setter='movement', type=int, sanitizer=util.sanitize_int),
         'key': TAG_MAP_ENTRY(getter='key', setter='key', type=str),
         'media': TAG_MAP_ENTRY(getter='media', setter='media', type=str),
         'showmovement': TAG_MAP_ENTRY(getter='showmovement', setter='showmovement', type=int, sanitizer=util.sanitize_bool),
