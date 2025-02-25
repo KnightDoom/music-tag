@@ -25,7 +25,7 @@ from music_tag import wave
 from music_tag.file import Artwork, MetadataItem, NotAppendable, AudioFile
 
 
-__version__ = """0.4.4"""
+__version__ = """0.4.5"""
 
 
 logger = logging.getLogger("music_tag")
@@ -41,7 +41,7 @@ def _subclass_spider_dfs(kls, _lst=None):
     return _lst
 
 
-def load_file(file_spec, err='raise'):
+def load_file(file_spec, err="raise"):
     if isinstance(file_spec, mutagen.FileType):
         mfile = file_spec
         filename = mfile.filename
@@ -62,24 +62,41 @@ def load_file(file_spec, err='raise'):
             ret = kls(filename, _mfile=mfile)
             break
 
-    if ret is None and err == 'raise':
-        raise NotImplementedError("Mutagen type {0} not implemented"
-                                  "".format(type(mfile)))
+    if ret is None and err == "raise":
+        raise NotImplementedError(
+            "Mutagen type {0} not implemented" "".format(type(mfile))
+        )
 
     return ret
+
 
 def tags():
     return file.tags()
 
-__all__ = ['file', 'util',
-           'aac', 'aiff', 'apev2', 'asf', 'dsf', 'flac',
-           'id3', 'mp4', 'smf', 'vorbis', 'wave',
-           'logger', 'log',
-           'Artwork', 'MetadataItem', 'NotAppendable',
-           'AudioFile',
-           'load_file',
-           'tags'
-           ]
+
+__all__ = [
+    "file",
+    "util",
+    "aac",
+    "aiff",
+    "apev2",
+    "asf",
+    "dsf",
+    "flac",
+    "id3",
+    "mp4",
+    "smf",
+    "vorbis",
+    "wave",
+    "logger",
+    "log",
+    "Artwork",
+    "MetadataItem",
+    "NotAppendable",
+    "AudioFile",
+    "load_file",
+    "tags",
+]
 
 ##
 ## EOF
