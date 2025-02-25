@@ -654,6 +654,8 @@ _DEFAULT_TAG_MAP = {
     'acoustidid': TAG_MAP_ENTRY(type=str),
     'acoustidfingerprint': TAG_MAP_ENTRY(type=str),
 
+    'spotid': TAG_MAP_ENTRY(type=str),
+
     'subtitle': TAG_MAP_ENTRY(type=str),
     'discsubtitle': TAG_MAP_ENTRY(type=str),
 

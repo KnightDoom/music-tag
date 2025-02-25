@@ -102,6 +102,15 @@ def rm_pictures(afile, norm_key):
     afile.mfile.tags.delall('APIC')
     afile.mfile.tags.delall('PIC')
 
+def get_spotid(afile, norm_key):
+    id = afile.mfile.tags.getall('TXXX:spotid')[0]
+    return id.text
+
+def set_spotid(afile, norm_key, val):
+    afile.mfile.tags.delall('TXXX:spotid')
+    afile.mfile.tags.add(mutagen.id3.TXXX(desc='spotid', text=str(val)))
+    return
+
 # https://github.com/tilo/ID3/tree/master/docs
 
 _TAG_MAP_ID3_1 = {
@@ -271,6 +280,8 @@ _TAG_MAP_ID3_2_4 = {
     'musicippuid': TAG_MAP_ENTRY(getter='TXXX:MusicIP PUID', setter='TXXX:MusicIP PUID', type=str),
     'acoustidid': TAG_MAP_ENTRY(getter='TXXX:Acoustid Id', setter='TXXX:Acoustid Id', type=str),
     'acoustidfingerprint': TAG_MAP_ENTRY(getter='TXXX:Acoustid Fingerprint', setter='TXXX:Acoustid Fingerprint', type=str),
+
+    'spotid': TAG_MAP_ENTRY(getter=get_spotid, setter=set_spotid, type=str),
 
     'subtitle': TAG_MAP_ENTRY(getter='TIT3', setter='TIT3', type=str),
     'discsubtitle': TAG_MAP_ENTRY(getter='TSST', setter='TSST', type=str),

@@ -100,6 +100,8 @@ class FlacFile(AudioFile):
         'acoustidid': TAG_MAP_ENTRY(getter='acoustid_id', setter='acoustid_id', type=str),
         'acoustidfingerprint': TAG_MAP_ENTRY(getter='acoustid_fingerprint', setter='acoustid_fingerprint', type=str),
 
+        'spotid': TAG_MAP_ENTRY(getter='spot_id', setter='spot_id', type=str),
+
         'subtitle': TAG_MAP_ENTRY(getter='subtitle', setter='subtitle', type=str),
         'discsubtitle': TAG_MAP_ENTRY(getter='discsubtitle', setter='discsubtitle', type=str),
 
