@@ -216,7 +216,8 @@ class Mp4File(AudioFile):
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MEDIA', v),
                               remover='----:com.apple.iTunes:MEDIA',
                               type=str),
-
+        'spotid': TAG_MAP_ENTRY(getter='spot_id', setter='spot_id', type=str),
+        
         'musicbrainzartistid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Artist Id'),
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Artist Id', v),
                               remover='----:com.apple.iTunes:MusicBrainz Artist Id',
