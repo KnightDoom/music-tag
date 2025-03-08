@@ -15,7 +15,7 @@ mutagen.easymp4.EasyMP4Tags.RegisterTextKey("compilation", "cpil")
 
 
 _MP4_ISRC_KEY = '----:com.apple.iTunes:ISRC'
-
+_MP4_SPOTID_KEY = '----:com.apple.iTunes:SPOTID'
 
 def get_tracknum(afile, norm_key):
     trkn = afile.mfile.get('trkn', [(None, None)])[0]
@@ -216,7 +216,10 @@ class Mp4File(AudioFile):
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MEDIA', v),
                               remover='----:com.apple.iTunes:MEDIA',
                               type=str),
-        'spotid': TAG_MAP_ENTRY(getter='spotid', setter='spotid', type=str),
+        'spotid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, _MP4_SPOTID_KEY),
+                              setter=lambda f, k, v: freeform_set(f, _MP4_SPOTID_KEY, v),
+                              remover=_MP4_ISRC_KEY,
+                              type=str),
         
         'musicbrainzartistid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:MusicBrainz Artist Id'),
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:MusicBrainz Artist Id', v),
