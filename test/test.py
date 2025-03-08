@@ -43,6 +43,7 @@ set_vals = {
     'lyrics': 'NEW LYRICS',
     'comment': 'NEW COMMENT',
     'artwork': [img1, img2],
+    'spotid' : '123456abz',
 }
 
 append_vals = {
@@ -61,6 +62,7 @@ append_vals = {
     'lyrics': 'APPENDED LYRICS',
     'comment': 'APPENDED COMMENT',
     'artwork': img2,
+    'spotid' : '0987654321az',
 }
 
 
