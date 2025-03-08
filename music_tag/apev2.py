@@ -149,7 +149,7 @@ class Apev2File(AudioFile):
         'acoustidid': TAG_MAP_ENTRY(getter='Acoustid ID', setter='Acoustid ID', type=str),
         'acoustidfingerprint': TAG_MAP_ENTRY(getter='Acousdid FP', setter='Acousdid FP', type=str),
 
-        'spotid': TAG_MAP_ENTRY(getter='spot_id', setter='spot_id', type=str),
+        'spotid': TAG_MAP_ENTRY(getter='spotid', setter='spotid', type=str),
 
         'subtitle': TAG_MAP_ENTRY(getter='Subtitle', setter='Subtitle', type=str),
         'discsubtitle': TAG_MAP_ENTRY(getter='DiscSubtitle', setter='DiscSubtitle', type=str),
