@@ -275,6 +275,11 @@ class Mp4File(AudioFile):
                               remover='----:com.apple.iTunes:Acoustid Fingerprint',
                               type=str),
 
+        'spotid': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:SPOTID'),
+                              setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:SPOTID', v),
+                              remover='----:com.apple.iTunes:SPOTID',
+                              type=str),
+
         'subtitle': TAG_MAP_ENTRY(getter=lambda f, k: freeform_get(f, '----:com.apple.iTunes:SUBTITLE'),
                               setter=lambda f, k, v: freeform_set(f, '----:com.apple.iTunes:SUBTITLE', v),
                               remover='----:com.apple.iTunes:SUBTITLE',
